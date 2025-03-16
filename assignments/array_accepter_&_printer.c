@@ -30,12 +30,13 @@ int* createArray(int *size) {
     }
 
     // Fill the array with user input
+    printf("Enter the value of the array\n");
     for (int i = 0; i < *size; i++) {
-        printf("Enter value for index [%d]: ", i);
+        printf("index[%d]: ", i);
         while (scanf("%d", &array[i]) != 1) {
             while (getchar() != '\n'); // Clear the input buffer
             printf("Invalid input. Please enter a valid integer.\n");
-            printf("Enter value for index [%d]: ", i);
+            printf("index[%d]: ", i);
         }
     }
 
