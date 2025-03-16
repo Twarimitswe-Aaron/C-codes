@@ -3,15 +3,23 @@
     {
       "name": "windows-gcc-x64",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",  // Workspace folder and subdirectories
+        "C:/msys64/mingw64/include",  // MinGW include path (64-bit)
+        "C:/msys64/usr/include"  // MSYS2 include path
       ],
-      "compilerPath": "gcc",
-      "cStandard": "${default}",
-      "cppStandard": "${default}",
-      "intelliSenseMode": "windows-gcc-x64",
-      "compilerArgs": [
-        ""
-      ]
+      "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",  // Path to the MinGW GCC compiler
+      "cStandard": "c11",  // C standard (adjust as needed)
+      "cppStandard": "c++17",  // C++ standard (adjust as needed)
+      "intelliSenseMode": "gcc-x64",  // IntelliSense mode for GCC
+      "compilerArgs": [],
+      "browse": {
+        "path": [
+          "${workspaceFolder}",
+          "C:/msys64/mingw64/include",
+          "C:/msys64/usr/include"
+        ],
+        "limitSymbolsToIncludedHeaders": true
+      }
     }
   ],
   "version": 4
