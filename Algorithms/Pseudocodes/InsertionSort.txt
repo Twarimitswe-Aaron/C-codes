@@ -1,0 +1,12 @@
+FUNCTION insertionSort(array, size)
+    DECLARE key, j
+    FOR i <- 1 TO size - 1 DO  // Loop starts from index 1 to size-1
+        key <- array[i]
+        j <- i
+        WHILE j > 0 AND array[j - 1] > key DO
+            array[j] <- array[j - 1]  // Shift element to the right
+            j <- j - 1
+        END WHILE
+        array[j] <- key  // Insert the key at the correct position
+    END FOR
+END FUNCTION
