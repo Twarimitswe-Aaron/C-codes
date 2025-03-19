@@ -37,8 +37,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/assignments",
-      "program": "d:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/assignments/build/Debug/outDebug",
+      "cwd": "d:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Algorithms/Implementation",
+      "program": "d:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Algorithms/Implementation/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
