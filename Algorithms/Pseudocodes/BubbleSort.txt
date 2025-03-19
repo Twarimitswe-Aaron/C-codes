@@ -1,0 +1,23 @@
+FUNCTION bubbleSort(array, size)
+    DECLARE swapped, temp
+    
+    FOR i <- 0 TO size - 1 DO
+        swapped <- 0  // Reset swap flag
+        
+        FOR j <- 0 TO size - i - 2 DO
+            IF array[j] > array[j + 1] THEN
+                // Swap elements
+                temp <- array[j]
+                array[j] <- array[j + 1]
+                array[j + 1] <- temp
+                
+                swapped <- 1  // Mark that a swap happened
+            END IF
+        END FOR
+        
+        // If no swaps happened, array is sorted
+        IF swapped = 0 THEN
+            BREAK
+        END IF
+    END FOR
+END FUNCTION
