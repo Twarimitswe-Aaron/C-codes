@@ -61,7 +61,7 @@ void findDuplicate(int *array, int size) {
 }
 
 int main() {
-    int array[] = {7, 6, 5, 4, 3,1,2,1,3,4, 2, 1, 1};
+    int array[] = {7, 6, 5, 4, 3, 2, 1, 1};
     int size = sizeof(array) / sizeof(array[0]);
     findDuplicate(array, size);
     return 0;
