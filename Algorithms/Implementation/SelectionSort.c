@@ -2,8 +2,7 @@
 void swapp(int *array,int current,int next){
 	int temp=array[current];
 	array[current]=array[next];
-	array[next]=temp;
-	
+	array[next]=temp;	
 }
 void printArray(int *array,int size){
 	printf("[");
@@ -17,7 +16,7 @@ void printArray(int *array,int size){
 }
 void selectionSort(int *array,int size){
 	int minIndex;
-	for (int i=0;i<size;i++){
+	for (int i=0;i<size-1;i++){
 		minIndex=i;
 		for(int j=i+1;j<size;j++){
 			if(array[j]<array[minIndex]){

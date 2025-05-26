@@ -1,0 +1,3 @@
+D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build/CMakeFiles/library_system.dir
+D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build/CMakeFiles/edit_cache.dir
+D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build/CMakeFiles/rebuild_cache.dir

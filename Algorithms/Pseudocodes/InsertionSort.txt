@@ -1,5 +1,5 @@
 FUNCTION insertionSort(array, size)
-    DECLARE key, j
+    DECLARE key, j 
     FOR i <- 1 TO size - 1 DO  // Loop starts from index 1 to size-1
         key <- array[i]
         j <- i

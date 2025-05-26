@@ -1,0 +1,25 @@
+FUNCTION QUICK_SORT(A, low, high)
+    IF low < high THEN
+        pivotIndex ← PARTITION(A, low, high)
+        QUICK_SORT(A, low, pivotIndex - 1)
+        QUICK_SORT(A, pivotIndex + 1, high)
+    END IF
+END FUNCTION
+
+FUNCTION PARTITION(A, low, high)
+    pivot ← A[high]
+    i ← low - 1
+
+    FOR j ← low TO high - 1 DO
+        IF A[j] ≤ pivot THEN
+            i ← i + 1
+            SWAP A[i] WITH A[j]
+        END IF
+    END FOR
+
+    SWAP A[i + 1] WITH A[high]
+    RETURN i + 1
+END FUNCTION
+
+
+
