@@ -140,6 +140,51 @@ Book* book_find_by_id(Database *db, int book_id) {
 }
 
 /**
+ * Find a book by title
+ */
+Book* book_find_by_title(Database *db, const char *title) {
+    char query[512];
+    snprintf(query, sizeof(query), "SELECT * FROM books WHERE title='%s'", title);
+
+    MYSQL_RES *result = db_execute_select(db, query);
+    if (result == NULL) {
+        return NULL;
+    }
+
+    MYSQL_ROW row = mysql_fetch_row(result);
+    if (row == NULL) {
+        db_free_result(result);
+        return NULL;
+    }
+
+    Book *book = (Book*)malloc(sizeof(Book));
+    if (book == NULL) {
+        db_free_result(result);
+        return NULL;
+    }
+
+    // Map database row to book structure
+    book->book_id = atoi(row[0]);
+    strncpy(book->title, row[1], sizeof(book->title) - 1);
+    book->title[sizeof(book->title) - 1] = '\0';
+    book->author_id = atoi(row[2]);
+    book->publisher_id = atoi(row[3]);
+    strncpy(book->isbn, row[4], sizeof(book->isbn) - 1);
+    book->isbn[sizeof(book->isbn) - 1] = '\0';
+    strncpy(book->genre, row[5], sizeof(book->genre) - 1);
+    book->genre[sizeof(book->genre) - 1] = '\0';
+    book->year_published = atoi(row[6]);
+    book->copies_available = atoi(row[7]);
+    strncpy(book->shelf_location, row[8], sizeof(book->shelf_location) - 1);
+    book->shelf_location[sizeof(book->shelf_location) - 1] = '\0';
+    book->created_at = time(NULL); // or parse from DB if available
+    book->updated_at = book->created_at;
+
+    db_free_result(result);
+    return book;
+}
+
+/**
  * Create a new book list
  */
 BookList* book_list_create(int initial_capacity) {

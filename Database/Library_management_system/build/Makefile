@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named library_system
+# Target rules for targets named Library_management_system
 
 # Build rule for target.
-library_system: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 library_system
-.PHONY : library_system
+Library_management_system: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Library_management_system
+.PHONY : Library_management_system
 
 # fast build rule for target.
-library_system/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/build
-.PHONY : library_system/fast
+Library_management_system/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/build
+.PHONY : Library_management_system/fast
 
 src/database/database.obj: src/database/database.c.obj
 .PHONY : src/database/database.obj
 
 # target to build an object file
 src/database/database.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/database/database.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/database/database.c.obj
 .PHONY : src/database/database.c.obj
 
 src/database/database.i: src/database/database.c.i
@@ -141,7 +141,7 @@ src/database/database.i: src/database/database.c.i
 
 # target to preprocess a source file
 src/database/database.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/database/database.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/database/database.c.i
 .PHONY : src/database/database.c.i
 
 src/database/database.s: src/database/database.c.s
@@ -149,15 +149,63 @@ src/database/database.s: src/database/database.c.s
 
 # target to generate assembly for a file
 src/database/database.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/database/database.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/database/database.c.s
 .PHONY : src/database/database.c.s
+
+src/gui/books_page.obj: src/gui/books_page.c.obj
+.PHONY : src/gui/books_page.obj
+
+# target to build an object file
+src/gui/books_page.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/gui/books_page.c.obj
+.PHONY : src/gui/books_page.c.obj
+
+src/gui/books_page.i: src/gui/books_page.c.i
+.PHONY : src/gui/books_page.i
+
+# target to preprocess a source file
+src/gui/books_page.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/gui/books_page.c.i
+.PHONY : src/gui/books_page.c.i
+
+src/gui/books_page.s: src/gui/books_page.c.s
+.PHONY : src/gui/books_page.s
+
+# target to generate assembly for a file
+src/gui/books_page.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/gui/books_page.c.s
+.PHONY : src/gui/books_page.c.s
+
+src/gui/main_window.obj: src/gui/main_window.c.obj
+.PHONY : src/gui/main_window.obj
+
+# target to build an object file
+src/gui/main_window.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/gui/main_window.c.obj
+.PHONY : src/gui/main_window.c.obj
+
+src/gui/main_window.i: src/gui/main_window.c.i
+.PHONY : src/gui/main_window.i
+
+# target to preprocess a source file
+src/gui/main_window.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/gui/main_window.c.i
+.PHONY : src/gui/main_window.c.i
+
+src/gui/main_window.s: src/gui/main_window.c.s
+.PHONY : src/gui/main_window.s
+
+# target to generate assembly for a file
+src/gui/main_window.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/gui/main_window.c.s
+.PHONY : src/gui/main_window.c.s
 
 src/main.obj: src/main.c.obj
 .PHONY : src/main.obj
 
 # target to build an object file
 src/main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/main.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/main.c.obj
 .PHONY : src/main.c.obj
 
 src/main.i: src/main.c.i
@@ -165,7 +213,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -173,7 +221,7 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/main.c.s
 .PHONY : src/main.c.s
 
 src/models/author.obj: src/models/author.c.obj
@@ -181,7 +229,7 @@ src/models/author.obj: src/models/author.c.obj
 
 # target to build an object file
 src/models/author.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/author.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/author.c.obj
 .PHONY : src/models/author.c.obj
 
 src/models/author.i: src/models/author.c.i
@@ -189,7 +237,7 @@ src/models/author.i: src/models/author.c.i
 
 # target to preprocess a source file
 src/models/author.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/author.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/author.c.i
 .PHONY : src/models/author.c.i
 
 src/models/author.s: src/models/author.c.s
@@ -197,7 +245,7 @@ src/models/author.s: src/models/author.c.s
 
 # target to generate assembly for a file
 src/models/author.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/author.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/author.c.s
 .PHONY : src/models/author.c.s
 
 src/models/book.obj: src/models/book.c.obj
@@ -205,7 +253,7 @@ src/models/book.obj: src/models/book.c.obj
 
 # target to build an object file
 src/models/book.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/book.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/book.c.obj
 .PHONY : src/models/book.c.obj
 
 src/models/book.i: src/models/book.c.i
@@ -213,7 +261,7 @@ src/models/book.i: src/models/book.c.i
 
 # target to preprocess a source file
 src/models/book.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/book.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/book.c.i
 .PHONY : src/models/book.c.i
 
 src/models/book.s: src/models/book.c.s
@@ -221,7 +269,7 @@ src/models/book.s: src/models/book.c.s
 
 # target to generate assembly for a file
 src/models/book.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/book.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/book.c.s
 .PHONY : src/models/book.c.s
 
 src/models/borrowing.obj: src/models/borrowing.c.obj
@@ -229,7 +277,7 @@ src/models/borrowing.obj: src/models/borrowing.c.obj
 
 # target to build an object file
 src/models/borrowing.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/borrowing.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/borrowing.c.obj
 .PHONY : src/models/borrowing.c.obj
 
 src/models/borrowing.i: src/models/borrowing.c.i
@@ -237,7 +285,7 @@ src/models/borrowing.i: src/models/borrowing.c.i
 
 # target to preprocess a source file
 src/models/borrowing.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/borrowing.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/borrowing.c.i
 .PHONY : src/models/borrowing.c.i
 
 src/models/borrowing.s: src/models/borrowing.c.s
@@ -245,7 +293,7 @@ src/models/borrowing.s: src/models/borrowing.c.s
 
 # target to generate assembly for a file
 src/models/borrowing.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/borrowing.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/borrowing.c.s
 .PHONY : src/models/borrowing.c.s
 
 src/models/fine.obj: src/models/fine.c.obj
@@ -253,7 +301,7 @@ src/models/fine.obj: src/models/fine.c.obj
 
 # target to build an object file
 src/models/fine.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/fine.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/fine.c.obj
 .PHONY : src/models/fine.c.obj
 
 src/models/fine.i: src/models/fine.c.i
@@ -261,7 +309,7 @@ src/models/fine.i: src/models/fine.c.i
 
 # target to preprocess a source file
 src/models/fine.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/fine.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/fine.c.i
 .PHONY : src/models/fine.c.i
 
 src/models/fine.s: src/models/fine.c.s
@@ -269,7 +317,7 @@ src/models/fine.s: src/models/fine.c.s
 
 # target to generate assembly for a file
 src/models/fine.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/fine.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/fine.c.s
 .PHONY : src/models/fine.c.s
 
 src/models/member.obj: src/models/member.c.obj
@@ -277,7 +325,7 @@ src/models/member.obj: src/models/member.c.obj
 
 # target to build an object file
 src/models/member.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/member.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/member.c.obj
 .PHONY : src/models/member.c.obj
 
 src/models/member.i: src/models/member.c.i
@@ -285,7 +333,7 @@ src/models/member.i: src/models/member.c.i
 
 # target to preprocess a source file
 src/models/member.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/member.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/member.c.i
 .PHONY : src/models/member.c.i
 
 src/models/member.s: src/models/member.c.s
@@ -293,7 +341,7 @@ src/models/member.s: src/models/member.c.s
 
 # target to generate assembly for a file
 src/models/member.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/member.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/member.c.s
 .PHONY : src/models/member.c.s
 
 src/models/publisher.obj: src/models/publisher.c.obj
@@ -301,7 +349,7 @@ src/models/publisher.obj: src/models/publisher.c.obj
 
 # target to build an object file
 src/models/publisher.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/publisher.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/publisher.c.obj
 .PHONY : src/models/publisher.c.obj
 
 src/models/publisher.i: src/models/publisher.c.i
@@ -309,7 +357,7 @@ src/models/publisher.i: src/models/publisher.c.i
 
 # target to preprocess a source file
 src/models/publisher.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/publisher.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/publisher.c.i
 .PHONY : src/models/publisher.c.i
 
 src/models/publisher.s: src/models/publisher.c.s
@@ -317,7 +365,7 @@ src/models/publisher.s: src/models/publisher.c.s
 
 # target to generate assembly for a file
 src/models/publisher.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/publisher.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/publisher.c.s
 .PHONY : src/models/publisher.c.s
 
 src/models/staff.obj: src/models/staff.c.obj
@@ -325,7 +373,7 @@ src/models/staff.obj: src/models/staff.c.obj
 
 # target to build an object file
 src/models/staff.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/staff.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/staff.c.obj
 .PHONY : src/models/staff.c.obj
 
 src/models/staff.i: src/models/staff.c.i
@@ -333,7 +381,7 @@ src/models/staff.i: src/models/staff.c.i
 
 # target to preprocess a source file
 src/models/staff.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/staff.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/staff.c.i
 .PHONY : src/models/staff.c.i
 
 src/models/staff.s: src/models/staff.c.s
@@ -341,7 +389,7 @@ src/models/staff.s: src/models/staff.c.s
 
 # target to generate assembly for a file
 src/models/staff.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\library_system.dir\build.make CMakeFiles/library_system.dir/src/models/staff.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Library_management_system.dir\build.make CMakeFiles/Library_management_system.dir/src/models/staff.c.s
 .PHONY : src/models/staff.c.s
 
 # Help Target
@@ -352,10 +400,16 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... library_system
+	@echo ... Library_management_system
 	@echo ... src/database/database.obj
 	@echo ... src/database/database.i
 	@echo ... src/database/database.s
+	@echo ... src/gui/books_page.obj
+	@echo ... src/gui/books_page.i
+	@echo ... src/gui/books_page.s
+	@echo ... src/gui/main_window.obj
+	@echo ... src/gui/main_window.i
+	@echo ... src/gui/main_window.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

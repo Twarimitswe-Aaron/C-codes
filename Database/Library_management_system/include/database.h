@@ -1,7 +1,7 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"
+#include <mariadb/mysql.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

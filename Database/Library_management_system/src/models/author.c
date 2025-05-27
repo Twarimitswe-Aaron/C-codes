@@ -35,42 +35,70 @@ void author_free(Author *author) {
 /**
  * Save a new author to the database
  */
-int author_save(Database *db, Author *author) {
-    char query[1024];
-    snprintf(query, sizeof(query),
-        "INSERT INTO authors (name, bio) VALUES ('%s', '%s')",
+int author_save(MYSQL* db, Author* author) {
+    char query[256];
+    snprintf(query, sizeof(query), 
+        "INSERT INTO authors (name, biography) VALUES ('%s', '%s')",
         author->name, author->bio);
-
-    if (!db_execute_query(db, query)) {
-        return 0;
+    
+    if (mysql_query(db, query) != 0) {
+        return -1;
     }
-
-    // Get the inserted ID
-    MYSQL_RES *result = db_execute_select(db, "SELECT LAST_INSERT_ID()");
-    if (result == NULL) {
-        return 0;
-    }
-
-    MYSQL_ROW row = mysql_fetch_row(result);
-    if (row != NULL) {
-        author->author_id = atoi(row[0]);
-    }
-
-    db_free_result(result);
-    return 1;
+    return 0;
 }
 
 /**
  * Update an existing author in the database
  */
 int author_update(Database *db, Author *author) {
-    char query[1024];
-    snprintf(query, sizeof(query),
-        "UPDATE authors SET name='%s', bio='%s' WHERE author_id=%d",
-        author->name, author->bio, author->author_id);
+    char escaped_name[200];
+    char escaped_bio[2000];
+    
+    // Escape the strings
+    mysql_real_escape_string(db->conn, escaped_name, author->name, strlen(author->name));
+    mysql_real_escape_string(db->conn, escaped_bio, author->bio, strlen(author->bio));
+    
+    // Use prepared statement to avoid buffer overflow
+    MYSQL_STMT *stmt = mysql_stmt_init(db->conn);
+    if (!stmt) {
+        return 0;
+    }
+
+    const char *query_str = "UPDATE authors SET name=?, bio=? WHERE author_id=?";
+    if (mysql_stmt_prepare(stmt, query_str, strlen(query_str)) != 0) {
+        mysql_stmt_close(stmt);
+        return 0;
+    }
+
+    MYSQL_BIND bind[3];
+    memset(bind, 0, sizeof(bind));
+
+    // Bind name
+    bind[0].buffer_type = MYSQL_TYPE_STRING;
+    bind[0].buffer = escaped_name;
+    bind[0].buffer_length = strlen(escaped_name);
+    bind[0].is_null = 0;
+
+    // Bind bio
+    bind[1].buffer_type = MYSQL_TYPE_STRING;
+    bind[1].buffer = escaped_bio;
+    bind[1].buffer_length = strlen(escaped_bio);
+    bind[1].is_null = 0;
+
+    // Bind author_id
+    bind[2].buffer_type = MYSQL_TYPE_LONG;
+    bind[2].buffer = &author->author_id;
+    bind[2].is_null = 0;
+
+    if (mysql_stmt_bind_param(stmt, bind) != 0) {
+        mysql_stmt_close(stmt);
+        return 0;
+    }
 
     author->updated_at = time(NULL);
-    return db_execute_query(db, query);
+    int result = (mysql_stmt_execute(stmt) == 0);
+    mysql_stmt_close(stmt);
+    return result;
 }
 
 /**

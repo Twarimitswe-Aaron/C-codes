@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\library_system.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\library_system.dir/objects.a @CMakeFiles\library_system.dir\objects1.rsp
-gcc -g -Wl,--whole-archive CMakeFiles\library_system.dir/objects.a -Wl,--no-whole-archive -o library_system.exe -Wl,--out-implib,liblibrary_system.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\library_system.dir\linkLibs.rsp

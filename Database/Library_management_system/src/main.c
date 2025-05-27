@@ -6,11 +6,15 @@
 #include "../include/staff.h"
 #include "../include/borrowing.h"
 #include "../include/fine.h"
+#include <gtk/gtk.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 // Function prototypes
+void print_interface_menu();
+void run_console_interface(Database *db);
+void run_gui_interface(Database *db);
 void print_menu();
 void handle_books(Database *db);
 void handle_authors(Database *db);
@@ -19,7 +23,9 @@ void handle_members(Database *db);
 void handle_staff(Database *db);
 void handle_borrowings(Database *db);
 void handle_fines(Database *db);
-void db_disconnect(Database *db);
+
+// External GUI functions
+extern void create_main_window(void);
 
 int main() {
     printf("Starting Library Management System...\n");
@@ -41,6 +47,40 @@ int main() {
     }
     printf("Connected to database successfully.\n");
 
+    int choice;
+    do {
+        print_interface_menu();
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        getchar(); // Consume newline
+
+        switch (choice) {
+            case 1:
+                run_console_interface(db);
+                break;
+            case 2:
+                run_gui_interface(db);
+                break;
+            case 0:
+                printf("Goodbye!\n");
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 0);
+
+    db_close(db);
+    return 0;
+}
+
+void print_interface_menu() {
+    printf("\nLibrary Management System - Interface Selection\n");
+    printf("1. Console Interface\n");
+    printf("2. GUI Interface\n");
+    printf("0. Exit\n");
+}
+
+void run_console_interface(Database *db) {
     int choice;
     do {
         print_menu();
@@ -71,15 +111,23 @@ int main() {
                 handle_fines(db);
                 break;
             case 0:
-                printf("Goodbye!\n");
+                printf("Returning to interface selection...\n");
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");
         }
     } while (choice != 0);
+}
 
-    db_disconnect(db);
-    return 0;
+void run_gui_interface(Database *db) {
+    (void)db; // Suppress unused parameter warning
+    gtk_init(NULL, NULL);
+
+    // Create and show the main window
+    create_main_window();
+
+    // Start the GTK main loop
+    gtk_main();
 }
 
 void print_menu() {

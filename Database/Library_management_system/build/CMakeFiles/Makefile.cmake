@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_GENERATOR "MinGW Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeCInformation.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake"
@@ -17,16 +18,25 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/FindPackageMessage.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/FindPkgConfig.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Linker/GNU-C.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
+  "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake"
@@ -34,6 +44,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake"
   "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/CMakeLists.txt"
   "CMakeFiles/4.0.2/CMakeCCompiler.cmake"
+  "CMakeFiles/4.0.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.0.2/CMakeRCCompiler.cmake"
   "CMakeFiles/4.0.2/CMakeSystem.cmake"
   )
@@ -51,5 +62,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/library_system.dir/DependInfo.cmake"
+  "CMakeFiles/Library_management_system.dir/DependInfo.cmake"
   )

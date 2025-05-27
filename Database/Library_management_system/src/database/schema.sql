@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS members (
     address VARCHAR(255),
     phone VARCHAR(20),
     email VARCHAR(100),
-    date_joined DATE NOT NULL,
+    date_joined DATE DEFAULT NULL,
     membership_status VARCHAR(20) DEFAULT 'active',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP

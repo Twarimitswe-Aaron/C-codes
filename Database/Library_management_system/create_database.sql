@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS publishers (
     publisher_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     address TEXT,
-    phone VARCHAR(20)
+    contact_info VARCHAR(100)
 );
 
 -- Create books table
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS members (
     email VARCHAR(255) UNIQUE,
     phone VARCHAR(20),
     address TEXT,
-    join_date DATE,
+    date_joined DATE,
     status ENUM('active', 'inactive', 'suspended') DEFAULT 'active'
 );
 
