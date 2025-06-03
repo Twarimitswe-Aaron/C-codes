@@ -77,6 +77,10 @@ void create_main_window(void) {
     gtk_widget_set_size_request(sidebar, 200, -1);
     gtk_box_pack_start(GTK_BOX(content_box), sidebar, FALSE, FALSE, 0);
 
+    // Create content area
+    content_area = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+    gtk_box_pack_start(GTK_BOX(content_box), content_area, TRUE, TRUE, 0);
+
     // Create sidebar buttons with icons
     GtkWidget *books_btn = gtk_button_new_with_label("📚 Books");
     GtkWidget *authors_btn = gtk_button_new_with_label("✍️ Authors");
@@ -120,10 +124,6 @@ void create_main_window(void) {
     g_signal_connect(staff_btn, "clicked", G_CALLBACK(show_staff_page), NULL);
     g_signal_connect(borrowings_btn, "clicked", G_CALLBACK(show_borrowings_page), NULL);
     g_signal_connect(fines_btn, "clicked", G_CALLBACK(show_fines_page), NULL);
-
-    // Create content area
-    content_area = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
-    gtk_box_pack_start(GTK_BOX(content_box), content_area, TRUE, TRUE, 0);
 
     // Add CSS
     GtkCssProvider *provider = gtk_css_provider_new();

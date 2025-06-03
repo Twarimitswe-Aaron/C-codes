@@ -35,16 +35,49 @@ void author_free(Author *author) {
 /**
  * Save a new author to the database
  */
-int author_save(MYSQL* db, Author* author) {
-    char query[256];
-    snprintf(query, sizeof(query), 
-        "INSERT INTO authors (name, biography) VALUES ('%s', '%s')",
-        author->name, author->bio);
+int author_save(Database *db, Author* author) {
+    char escaped_name[200];
+    char escaped_bio[2000];
     
-    if (mysql_query(db, query) != 0) {
-        return -1;
+    // Escape the strings
+    mysql_real_escape_string(db->conn, escaped_name, author->name, strlen(author->name));
+    mysql_real_escape_string(db->conn, escaped_bio, author->bio, strlen(author->bio));
+    
+    // Use prepared statement to avoid buffer overflow
+    MYSQL_STMT *stmt = mysql_stmt_init(db->conn);
+    if (!stmt) {
+        return 0;
     }
-    return 0;
+
+    const char *query_str = "INSERT INTO authors (name, bio) VALUES (?, ?)";
+    if (mysql_stmt_prepare(stmt, query_str, strlen(query_str)) != 0) {
+        mysql_stmt_close(stmt);
+        return 0;
+    }
+
+    MYSQL_BIND bind[2];
+    memset(bind, 0, sizeof(bind));
+
+    // Bind name
+    bind[0].buffer_type = MYSQL_TYPE_STRING;
+    bind[0].buffer = escaped_name;
+    bind[0].buffer_length = strlen(escaped_name);
+    bind[0].is_null = 0;
+
+    // Bind bio
+    bind[1].buffer_type = MYSQL_TYPE_STRING;
+    bind[1].buffer = escaped_bio;
+    bind[1].buffer_length = strlen(escaped_bio);
+    bind[1].is_null = 0;
+
+    if (mysql_stmt_bind_param(stmt, bind) != 0) {
+        mysql_stmt_close(stmt);
+        return 0;
+    }
+
+    int result = (mysql_stmt_execute(stmt) == 0);
+    mysql_stmt_close(stmt);
+    return result;
 }
 
 /**

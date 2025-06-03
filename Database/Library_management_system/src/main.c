@@ -16,6 +16,7 @@ void print_interface_menu();
 void run_console_interface(Database *db);
 void run_gui_interface(Database *db);
 void print_menu();
+
 void handle_books(Database *db);
 void handle_authors(Database *db);
 void handle_publishers(Database *db);
@@ -339,7 +340,7 @@ void handle_authors(Database *db) {
         printf("0. Back to Main Menu\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
-        getchar(); // Consume newline
+        getchar(); // Consume newlinevoi
 
         switch (choice) {
             case 1: {

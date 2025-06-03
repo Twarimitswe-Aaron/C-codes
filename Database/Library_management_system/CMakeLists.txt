@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(Library_management_system)
 
-# Add cmake directory to module path
+# Add CMake modules directory to module path
+list(APPEND CMAKE_MODULE_PATH "C:/Program Files/CMake/share/cmake-4.0/Modules")
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 # Set PKG_CONFIG_PATH to help find GTK
@@ -68,7 +69,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 
 # Copy MariaDB DLL to output directory
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
     "${MARIADB_LIB_DIR}/libmariadb.dll"
-    $<TARGET_FILE_DIR:${PROJECT_NAME}>
-) 
+    "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+)
