@@ -1,7 +1,7 @@
 @echo off
 echo Compiling Library Management System...
 
-:: Compile each source file to an object file
+:: Compile main.c
 gcc -c main.c -o main.o
 if errorlevel 1 (
     echo Compilation of main.c failed!
@@ -9,7 +9,7 @@ if errorlevel 1 (
     exit /b 1
 )
 
-:: Skip console.c if you're not using it
+:: Compile console.c
 gcc -c console.c -o console.o
 if errorlevel 1 (
     echo Compilation of console.c failed!
@@ -17,6 +17,7 @@ if errorlevel 1 (
     exit /b 1
 )
 
+:: Compile gui.c
 gcc -c gui.c -o gui.o
 if errorlevel 1 (
     echo Compilation of gui.c failed!
@@ -24,6 +25,7 @@ if errorlevel 1 (
     exit /b 1
 )
 
+:: Compile database.c (optional future use)
 gcc -c database.c -o database.o
 if errorlevel 1 (
     echo Compilation of database.c failed!
@@ -31,22 +33,30 @@ if errorlevel 1 (
     exit /b 1
 )
 
-gcc -c book_manager.c -o book_manager.o
+
+
+:: Compile manager.c (newly added file)
+gcc -c manager.c -o manager.o
 if errorlevel 1 (
-    echo Compilation of book_manager.c failed!
+    echo Compilation of manager.c failed!
     pause
     exit /b 1
 )
 
-:: Link the object files into an executable
-gcc main.c console.c gui.c database.c book_manager.c -o library_system.exe -lgdi32 -luser32 -lkernel32 -lcomctl32
+:: Link all object files
+gcc main.o console.o gui.o database.o  manager.o -o library_system.exe -lgdi32 -luser32 -lkernel32 -lcomctl32
 if errorlevel 1 (
     echo Linking failed!
     pause
     exit /b 1
 )
 
+echo.
 echo Compilation and linking successful!
+echo --------------------------------------
 echo Running Library Management System...
+echo --------------------------------------
+echo.
+
 library_system.exe
 pause
