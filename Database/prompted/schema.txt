@@ -1,0 +1,27 @@
+# Sample database schema
+# Format: TABLE table_name
+#        column_name type [constraints]
+
+TABLE users
+id INTEGER PRIMARY KEY
+username TEXT NOT NULL UNIQUE
+email TEXT NOT NULL UNIQUE
+password_hash TEXT NOT NULL
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+TABLE posts
+id INTEGER PRIMARY KEY
+user_id INTEGER NOT NULL
+title TEXT NOT NULL
+content TEXT
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+FOREIGN KEY (user_id) REFERENCES users(id)
+
+TABLE comments
+id INTEGER PRIMARY KEY
+post_id INTEGER NOT NULL
+user_id INTEGER NOT NULL
+content TEXT NOT NULL
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+FOREIGN KEY (post_id) REFERENCES posts(id)
+FOREIGN KEY (user_id) REFERENCES users(id) 

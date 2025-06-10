@@ -4,8 +4,6 @@
 #include "gui.h"
 #include "console.h"
 
-// Removed: HFONT hFontDashboardTitle;
-
 // Function declarations
 void showModeSelection();
 void initializeDatabase();

@@ -127,7 +127,7 @@ void addBookConsole() {
     book.genre[strcspn(book.genre, "\n")] = 0;
     
     printf("Year Published: ");
-    scanf("%lld", &book.year_published);
+    scanf("%d", &book.year_published);
     getchar();
     
     printf("Copies Available: ");
@@ -190,10 +190,10 @@ void updateBookConsole() {
     input[strcspn(input, "\n")] = 0;
     if (strlen(input) > 0) strcpy(book->genre, input);
     
-    printf("Year Published [%lld]: ", book->year_published);
+    printf("Year Published [%d]: ", book->year_published);
     fgets(input, sizeof(input), stdin);
     input[strcspn(input, "\n")] = 0;
-    if (strlen(input) > 0) book->year_published = atoll(input);
+    if (strlen(input) > 0) book->year_published = atoi(input);
     
     printf("Copies Available [%d]: ", book->copies_available);
     fgets(input, sizeof(input), stdin);
@@ -254,7 +254,7 @@ void viewBookConsole() {
     printf("Publisher ID: %d\n", book->publisher_id);
     printf("ISBN: %s\n", book->isbn);
     printf("Genre: %s\n", book->genre);
-    printf("Year Published: %lld\n", book->year_published);
+    printf("Year Published: %d\n", book->year_published);
     printf("Copies Available: %d\n", book->copies_available);
     printf("Shelf Location: %s\n", book->shelf_location);
     
@@ -282,7 +282,7 @@ void listAllBooksConsole() {
         printf("----------------------------------------------------------------------\n");
         
         for (int i = 0; i < count; i++) {
-            printf("%-5d %-30s %-8d %-8d %-15s %-15s %-6lld %-8d %-15s\n",
+            printf("%-5d %-30s %-8d %-8d %-15s %-15s %-6d %-8d %-15s\n",
                    books[i].book_id,
                    books[i].title,
                    books[i].author_id,

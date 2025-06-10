@@ -6,5 +6,5 @@ C_DEFINES = -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601
 
 C_INCLUDES = @CMakeFiles/Library_management_system.dir/includes_C.rsp
 
-C_FLAGS = -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
+C_FLAGS = -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
 

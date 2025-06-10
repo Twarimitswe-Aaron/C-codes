@@ -321,4 +321,226 @@ void refresh_books_list(Database *db) {
     }
 }
 
+// Function to create a dialog with entry fields for book details
+static GtkWidget* create_book_dialog(const char *title, const char *button_text) {
+    GtkWidget *dialog = gtk_dialog_new_with_buttons(title, GTK_WINDOW(main_window),
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        button_text, GTK_RESPONSE_ACCEPT,
+        "Cancel", GTK_RESPONSE_CANCEL,
+        NULL);
+    gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+
+    GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+    GtkWidget *grid = gtk_grid_new();
+    gtk_grid_set_row_spacing(GTK_GRID(grid), 10);
+    gtk_grid_set_column_spacing(GTK_GRID(grid), 10);
+    gtk_container_add(GTK_CONTAINER(content_area), grid);
+
+    // Title entry
+    GtkWidget *title_label = gtk_label_new("Title:");
+    GtkWidget *title_entry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(grid), title_label, 0, 0, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), title_entry, 1, 0, 1, 1);
+
+    // Author entry
+    GtkWidget *author_label = gtk_label_new("Author:");
+    GtkWidget *author_entry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(grid), author_label, 0, 1, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), author_entry, 1, 1, 1, 1);
+
+    // Publisher entry
+    GtkWidget *publisher_label = gtk_label_new("Publisher:");
+    GtkWidget *publisher_entry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(grid), publisher_label, 0, 2, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), publisher_entry, 1, 2, 1, 1);
+
+    // ISBN entry
+    GtkWidget *isbn_label = gtk_label_new("ISBN:");
+    GtkWidget *isbn_entry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(grid), isbn_label, 0, 3, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), isbn_entry, 1, 3, 1, 1);
+
+    // Genre entry
+    GtkWidget *genre_label = gtk_label_new("Genre:");
+    GtkWidget *genre_entry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(grid), genre_label, 0, 4, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), genre_entry, 1, 4, 1, 1);
+
+    // Year published entry
+    GtkWidget *year_label = gtk_label_new("Year Published:");
+    GtkWidget *year_entry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(grid), year_label, 0, 5, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), year_entry, 1, 5, 1, 1);
+
+    // Copies available entry
+    GtkWidget *copies_label = gtk_label_new("Copies Available:");
+    GtkWidget *copies_entry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(grid), copies_label, 0, 6, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), copies_entry, 1, 6, 1, 1);
+
+    // Shelf location entry
+    GtkWidget *shelf_label = gtk_label_new("Shelf Location:");
+    GtkWidget *shelf_entry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(grid), shelf_label, 0, 7, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), shelf_entry, 1, 7, 1, 1);
+
+    gtk_widget_show_all(dialog);
+    return dialog;
+}
+
+// Handler for the Add Book button
+static void on_add_book_clicked(GtkWidget *widget, gpointer data) {
+    (void)widget;
+    Database *db = (Database *)data;
+    GtkWidget *dialog = create_book_dialog("Add Book", "Add");
+    gint response = gtk_dialog_run(GTK_DIALOG(dialog));
+    if (response == GTK_RESPONSE_ACCEPT) {
+        GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+        GtkWidget *grid = gtk_bin_get_child(GTK_BIN(content_area));
+        
+        // Get all entry widgets
+        GtkWidget *title_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 0);
+        GtkWidget *author_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 1);
+        GtkWidget *publisher_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 2);
+        GtkWidget *isbn_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 3);
+        GtkWidget *genre_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 4);
+        GtkWidget *year_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 5);
+        GtkWidget *copies_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 6);
+        GtkWidget *shelf_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 7);
+
+        // Get text from entries
+        const gchar *title = gtk_entry_get_text(GTK_ENTRY(title_entry));
+        const gchar *author = gtk_entry_get_text(GTK_ENTRY(author_entry));
+        const gchar *publisher = gtk_entry_get_text(GTK_ENTRY(publisher_entry));
+        const gchar *isbn = gtk_entry_get_text(GTK_ENTRY(isbn_entry));
+        const gchar *genre = gtk_entry_get_text(GTK_ENTRY(genre_entry));
+        const gchar *year = gtk_entry_get_text(GTK_ENTRY(year_entry));
+        const gchar *copies = gtk_entry_get_text(GTK_ENTRY(copies_entry));
+        const gchar *shelf = gtk_entry_get_text(GTK_ENTRY(shelf_entry));
+
+        // Create a new book with the entered values
+        Book *book = book_create(
+            title,           // title
+            1,              // author_id (temporary, should be looked up)
+            1,              // publisher_id (temporary, should be looked up)
+            isbn,           // isbn
+            genre,          // genre
+            atoi(year),     // year_published
+            atoi(copies),   // copies_available
+            shelf           // shelf_location
+        );
+
+        if (book) {
+            if (book_save(db, book) == 0) {
+                g_print("Book added successfully: %s\n", title);
+            } else {
+                g_print("Failed to save book to database\n");
+            }
+            book_free(book);
+        } else {
+            g_print("Failed to create book\n");
+        }
+    }
+    gtk_widget_destroy(dialog);
+    refresh_books_list(db);
+}
+
+// Handler for the Edit Book button
+static void on_edit_book(GtkWidget *widget, gpointer data) {
+    (void)widget;
+    Database *db = (Database *)data;
+    GtkWidget *dialog = create_book_dialog("Edit Book", "Save");
+    gint response = gtk_dialog_run(GTK_DIALOG(dialog));
+    if (response == GTK_RESPONSE_ACCEPT) {
+        GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+        GtkWidget *grid = gtk_bin_get_child(GTK_BIN(content_area));
+        GtkWidget *title_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 0);
+        GtkWidget *author_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 1);
+        GtkWidget *publisher_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 2);
+        GtkWidget *isbn_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 3);
+        GtkWidget *genre_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 4);
+        GtkWidget *year_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 5);
+        GtkWidget *copies_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 6);
+        GtkWidget *shelf_entry = gtk_grid_get_child_at(GTK_GRID(grid), 1, 7);
+
+        const gchar *title = gtk_entry_get_text(GTK_ENTRY(title_entry));
+        const gchar *author = gtk_entry_get_text(GTK_ENTRY(author_entry));
+        const gchar *publisher = gtk_entry_get_text(GTK_ENTRY(publisher_entry));
+        const gchar *isbn = gtk_entry_get_text(GTK_ENTRY(isbn_entry));
+        const gchar *genre = gtk_entry_get_text(GTK_ENTRY(genre_entry));
+        const gchar *year = gtk_entry_get_text(GTK_ENTRY(year_entry));
+        const gchar *copies = gtk_entry_get_text(GTK_ENTRY(copies_entry));
+        const gchar *shelf = gtk_entry_get_text(GTK_ENTRY(shelf_entry));
+
+        // TODO: Update book in database
+        // For now, just print the details
+        g_print("Editing book: %s by %s, published by %s, ISBN: %s\n", title, author, publisher, isbn);
+    }
+    gtk_widget_destroy(dialog);
+    refresh_books_list(db);
+}
+
+// Handler for the Delete Book button
+static void on_delete_book(GtkWidget *widget, gpointer data) {
+    (void)widget;
+    Database *db = (Database *)data;
+    GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(main_window),
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        GTK_MESSAGE_QUESTION,
+        GTK_BUTTONS_YES_NO,
+        "Are you sure you want to delete this book?");
+    gint response = gtk_dialog_run(GTK_DIALOG(dialog));
+    if (response == GTK_RESPONSE_YES) {
+        // TODO: Delete book from database
+        g_print("Deleting book\n");
+    }
+    gtk_widget_destroy(dialog);
+    refresh_books_list(db);
+}
+
+// Handler for the search entry
+static void on_search_changed(GtkSearchEntry *entry, gpointer user_data) {
+    (void)user_data;
+    const gchar *query = gtk_entry_get_text(GTK_ENTRY(entry));
+    // TODO: Implement search logic
+    // For now, just refresh the list
+    refresh_books_list(db);
+}
+
+// Stub for edit_book_dialog_show
+static void edit_book_dialog_show(Database *db, int book_id) {
+    (void)db;
+    (void)book_id;
+    GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(main_window),
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        GTK_MESSAGE_INFO,
+        GTK_BUTTONS_OK,
+        "Edit Book dialog would appear here for book ID: %d", book_id);
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    gtk_widget_destroy(dialog);
+    refresh_books_list(db);
+}
+
+// Stub for delete_book_dialog_show
+static void delete_book_dialog_show(Database *db, int book_id) {
+    (void)db;
+    (void)book_id;
+    GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(main_window),
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        GTK_MESSAGE_INFO,
+        GTK_BUTTONS_OK,
+        "Delete Book dialog would appear here for book ID: %d", book_id);
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    gtk_widget_destroy(dialog);
+    refresh_books_list(db);
+}
+
+// Stub for search_books
+static void search_books(Database *db, const char *query) {
+    (void)db;
+    (void)query;
+    // For now, just refresh the list (implement search logic as needed)
+    refresh_books_list(db);
+}
+
 // [Rest of the functions would need similar styling enhancements, especially the dialog boxes]

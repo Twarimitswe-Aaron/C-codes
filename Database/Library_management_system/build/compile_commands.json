@@ -1,0 +1,68 @@
+[
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\main.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\main.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/main.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/main.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\database\\database.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\database\\database.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/database/database.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/database/database.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\models\\book.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\models\\book.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/models/book.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/models/book.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\models\\author.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\models\\author.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/models/author.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/models/author.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\models\\publisher.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\models\\publisher.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/models/publisher.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/models/publisher.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\models\\member.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\models\\member.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/models/member.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/models/member.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\models\\staff.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\models\\staff.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/models/staff.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/models/staff.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\models\\borrowing.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\models\\borrowing.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/models/borrowing.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/models/borrowing.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\models\\fine.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\models\\fine.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/models/fine.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/models/fine.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\gui\\main_window.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\gui\\main_window.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/gui/main_window.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/gui/main_window.c.obj"
+},
+{
+  "directory": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -DLIBDEFLATE_DLL -D_WIN32_WINNT=0x0601 @CMakeFiles/Library_management_system.dir/includes_C.rsp -g -DLIBDEFLATE_DLL -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -o CMakeFiles\\Library_management_system.dir\\src\\gui\\books_page.c.obj -c \"D:\\Documents\\Notes\\Programming Fundamentals\\Works and Presentations of fop\\Workspace\\work\\Database\\Library_management_system\\src\\gui\\books_page.c\"",
+  "file": "D:/Documents/Notes/Programming Fundamentals/Works and Presentations of fop/Workspace/work/Database/Library_management_system/src/gui/books_page.c",
+  "output": "CMakeFiles/Library_management_system.dir/src/gui/books_page.c.obj"
+}
+]

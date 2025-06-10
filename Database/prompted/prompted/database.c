@@ -21,61 +21,19 @@ int getNextId(const char* filename) {
 
 // Book operations
 int addBook(Book book) {
-    // Check if book with same ID already exists
-    if (book.book_id > 0) {
-        Book* existingBook = getBook(book.book_id);
-        if (existingBook) {
-            printf("Error: Book with ID %d already exists.\n", book.book_id);
-            free(existingBook);
-            return 0;
-        }
-    }
-
-    // Referential integrity: check author and publisher exist
-    if (book.author_id <= 0 || getAuthor(book.author_id) == NULL) {
-        printf("Error: Author ID %d does not exist.\n", book.author_id);
-        return 0;
-    }
-    if (book.publisher_id <= 0 || getPublisher(book.publisher_id) == NULL) {
-        printf("Error: Publisher ID %d does not exist.\n", book.publisher_id);
-        return 0;
-    }
-    // Non-null checks
-    if (strlen(book.title) == 0 || strlen(book.isbn) == 0 || strlen(book.genre) == 0 || strlen(book.shelf_location) == 0 || book.year_published == 0 || book.copies_available == 0) {
-        printf("Error: All fields must be filled and non-zero.\n");
-        return 0;
-    }
-
-    // If book_id is not set, generate a new one
-    if (book.book_id <= 0) {
-        book.book_id = getNextId("database/books.dat");
-    }
-
     FILE* file = fopen("database/books.dat", "ab");
     if (!file) return 0;
-    
+
+    book.book_id = getNextId("database/books.dat");
     fwrite(&book, sizeof(Book), 1, file);
     fclose(file);
     return 1;
 }
 
 int updateBook(Book book) {
-    // Referential integrity: check author and publisher exist
-    if (book.author_id <= 0 || getAuthor(book.author_id) == NULL) {
-        printf("Error: Author ID %d does not exist.\n", book.author_id);
-        return 0;
-    }
-    if (book.publisher_id <= 0 || getPublisher(book.publisher_id) == NULL) {
-        printf("Error: Publisher ID %d does not exist.\n", book.publisher_id);
-        return 0;
-    }
-    // Non-null checks
-    if (strlen(book.title) == 0 || strlen(book.isbn) == 0 || strlen(book.genre) == 0 || strlen(book.shelf_location) == 0 || book.year_published == 0 || book.copies_available == 0) {
-        printf("Error: All fields must be filled and non-zero.\n");
-        return 0;
-    }
     FILE* file = fopen("database/books.dat", "rb+");
     if (!file) return 0;
+
     Book temp;
     while (fread(&temp, sizeof(Book), 1, file) == 1) {
         if (temp.book_id == book.book_id) {
@@ -157,12 +115,9 @@ Book* getAllBooks(int* count) {
 
 // Author operations
 int addAuthor(Author author) {
-    if (strlen(author.name) == 0) {
-        printf("Error: Author name cannot be empty.\n");
-        return 0;
-    }
     FILE* file = fopen("database/authors.dat", "ab");
     if (!file) return 0;
+
     author.author_id = getNextId("database/authors.dat");
     fwrite(&author, sizeof(Author), 1, file);
     fclose(file);
@@ -170,12 +125,9 @@ int addAuthor(Author author) {
 }
 
 int updateAuthor(Author author) {
-    if (strlen(author.name) == 0) {
-        printf("Error: Author name cannot be empty.\n");
-        return 0;
-    }
     FILE* file = fopen("database/authors.dat", "rb+");
     if (!file) return 0;
+
     Author temp;
     while (fread(&temp, sizeof(Author), 1, file) == 1) {
         if (temp.author_id == author.author_id) {
@@ -191,26 +143,15 @@ int updateAuthor(Author author) {
 }
 
 int deleteAuthor(int author_id) {
-    // Check referential integrity: is this author referenced by any book?
-    int book_count = 0;
-    Book* books = getAllBooks(&book_count);
-    if (books) {
-        for (int i = 0; i < book_count; i++) {
-            if (books[i].author_id == author_id) {
-                printf("Error: Cannot delete author. There are books referencing this author.\n");
-                free(books);
-                return 0;
-            }
-        }
-        free(books);
-    }
     FILE* file = fopen("database/authors.dat", "rb");
     if (!file) return 0;
+
     FILE* tempFile = fopen("database/temp.dat", "wb");
     if (!tempFile) {
         fclose(file);
         return 0;
     }
+
     Author author;
     int found = 0;
     while (fread(&author, sizeof(Author), 1, file) == 1) {
@@ -220,10 +161,13 @@ int deleteAuthor(int author_id) {
             found = 1;
         }
     }
+
     fclose(file);
     fclose(tempFile);
+
     remove("database/authors.dat");
     rename("database/temp.dat", "database/authors.dat");
+
     return found;
 }
 
@@ -264,10 +208,6 @@ Author* getAllAuthors(int* count) {
 
 // Publisher operations
 int addPublisher(Publisher publisher) {
-    if (strlen(publisher.name) == 0) {
-        printf("Error: Publisher name cannot be empty.\n");
-        return 0;
-    }
     FILE* file = fopen("database/publishers.dat", "ab");
     if (!file) return 0;
 
@@ -278,10 +218,6 @@ int addPublisher(Publisher publisher) {
 }
 
 int updatePublisher(Publisher publisher) {
-    if (strlen(publisher.name) == 0) {
-        printf("Error: Publisher name cannot be empty.\n");
-        return 0;
-    }
     FILE* file = fopen("database/publishers.dat", "rb+");
     if (!file) return 0;
 
@@ -300,26 +236,15 @@ int updatePublisher(Publisher publisher) {
 }
 
 int deletePublisher(int publisher_id) {
-    // Check referential integrity: is this publisher referenced by any book?
-    int book_count = 0;
-    Book* books = getAllBooks(&book_count);
-    if (books) {
-        for (int i = 0; i < book_count; i++) {
-            if (books[i].publisher_id == publisher_id) {
-                printf("Error: Cannot delete publisher. There are books referencing this publisher.\n");
-                free(books);
-                return 0;
-            }
-        }
-        free(books);
-    }
     FILE* file = fopen("database/publishers.dat", "rb");
     if (!file) return 0;
+
     FILE* tempFile = fopen("database/temp.dat", "wb");
     if (!tempFile) {
         fclose(file);
         return 0;
     }
+
     Publisher publisher;
     int found = 0;
     while (fread(&publisher, sizeof(Publisher), 1, file) == 1) {
@@ -329,10 +254,13 @@ int deletePublisher(int publisher_id) {
             found = 1;
         }
     }
+
     fclose(file);
     fclose(tempFile);
+
     remove("database/publishers.dat");
     rename("database/temp.dat", "database/publishers.dat");
+
     return found;
 }
 
@@ -373,10 +301,6 @@ Publisher* getAllPublishers(int* count) {
 
 // Member operations
 int addMember(Member member) {
-    if (strlen(member.name) == 0 || strlen(member.address) == 0 || strlen(member.phone) == 0 || strlen(member.email) == 0) {
-        printf("Error: All member fields must be filled.\n");
-        return 0;
-    }
     FILE* file = fopen("database/members.dat", "ab");
     if (!file) return 0;
 
@@ -387,10 +311,6 @@ int addMember(Member member) {
 }
 
 int updateMember(Member member) {
-    if (strlen(member.name) == 0 || strlen(member.address) == 0 || strlen(member.phone) == 0 || strlen(member.email) == 0) {
-        printf("Error: All member fields must be filled.\n");
-        return 0;
-    }
     FILE* file = fopen("database/members.dat", "rb+");
     if (!file) return 0;
 
@@ -409,19 +329,6 @@ int updateMember(Member member) {
 }
 
 int deleteMember(int member_id) {
-    // Check referential integrity: is this member referenced by any borrowing?
-    int borrowing_count = 0;
-    Borrowing* borrowings = getAllBorrowings(&borrowing_count);
-    if (borrowings) {
-        for (int i = 0; i < borrowing_count; i++) {
-            if (borrowings[i].member_id == member_id) {
-                printf("Error: Cannot delete member. There are borrowings referencing this member.\n");
-                free(borrowings);
-                return 0;
-            }
-        }
-        free(borrowings);
-    }
     FILE* file = fopen("database/members.dat", "rb");
     if (!file) return 0;
 
@@ -487,10 +394,6 @@ Member* getAllMembers(int* count) {
 
 // Staff operations
 int addStaff(Staff staff) {
-    if (strlen(staff.name) == 0 || strlen(staff.role) == 0 || strlen(staff.email) == 0 || strlen(staff.phone) == 0) {
-        printf("Error: All staff fields must be filled.\n");
-        return 0;
-    }
     FILE* file = fopen("database/staff.dat", "ab");
     if (!file) return 0;
 
@@ -501,10 +404,6 @@ int addStaff(Staff staff) {
 }
 
 int updateStaff(Staff staff) {
-    if (strlen(staff.name) == 0 || strlen(staff.role) == 0 || strlen(staff.email) == 0 || strlen(staff.phone) == 0) {
-        printf("Error: All staff fields must be filled.\n");
-        return 0;
-    }
     FILE* file = fopen("database/staff.dat", "rb+");
     if (!file) return 0;
 
@@ -523,19 +422,6 @@ int updateStaff(Staff staff) {
 }
 
 int deleteStaff(int staff_id) {
-    // Check referential integrity: is this staff member referenced by any borrowing?
-    int borrowing_count = 0;
-    Borrowing* borrowings = getAllBorrowings(&borrowing_count);
-    if (borrowings) {
-        for (int i = 0; i < borrowing_count; i++) {
-            if (borrowings[i].staff_id == staff_id) {
-                printf("Error: Cannot delete staff member. There are borrowings referencing this staff member.\n");
-                free(borrowings);
-                return 0;
-            }
-        }
-        free(borrowings);
-    }
     FILE* file = fopen("database/staff.dat", "rb");
     if (!file) return 0;
 
@@ -601,19 +487,6 @@ Staff* getAllStaff(int* count) {
 
 // Borrowing operations
 int addBorrowing(Borrowing borrowing) {
-    // Referential integrity: check book and member exist
-    if (borrowing.book_id <= 0 || getBook(borrowing.book_id) == NULL) {
-        printf("Error: Book ID %d does not exist.\n", borrowing.book_id);
-        return 0;
-    }
-    if (borrowing.member_id <= 0 || getMember(borrowing.member_id) == NULL) {
-        printf("Error: Member ID %d does not exist.\n", borrowing.member_id);
-        return 0;
-    }
-    if (borrowing.borrow_date == 0) {
-        printf("Error: Borrow date cannot be empty.\n");
-        return 0;
-    }
     FILE* file = fopen("database/borrowings.dat", "ab");
     if (!file) return 0;
 
@@ -624,19 +497,6 @@ int addBorrowing(Borrowing borrowing) {
 }
 
 int updateBorrowing(Borrowing borrowing) {
-    // Referential integrity: check book and member exist
-    if (borrowing.book_id <= 0 || getBook(borrowing.book_id) == NULL) {
-        printf("Error: Book ID %d does not exist.\n", borrowing.book_id);
-        return 0;
-    }
-    if (borrowing.member_id <= 0 || getMember(borrowing.member_id) == NULL) {
-        printf("Error: Member ID %d does not exist.\n", borrowing.member_id);
-        return 0;
-    }
-    if (borrowing.borrow_date == 0) {
-        printf("Error: Borrow date cannot be empty.\n");
-        return 0;
-    }
     FILE* file = fopen("database/borrowings.dat", "rb+");
     if (!file) return 0;
 
@@ -655,19 +515,6 @@ int updateBorrowing(Borrowing borrowing) {
 }
 
 int deleteBorrowing(int borrowing_id) {
-    // Check referential integrity: is this borrowing referenced by any fine?
-    int fine_count = 0;
-    Fine* fines = getAllFines(&fine_count);
-    if (fines) {
-        for (int i = 0; i < fine_count; i++) {
-            if (fines[i].borrowing_id == borrowing_id) {
-                printf("Error: Cannot delete borrowing. There are fines referencing this borrowing.\n");
-                free(fines);
-                return 0;
-            }
-        }
-        free(fines);
-    }
     FILE* file = fopen("database/borrowings.dat", "rb");
     if (!file) return 0;
 
@@ -733,15 +580,6 @@ Borrowing* getAllBorrowings(int* count) {
 
 // Fine operations
 int addFine(Fine fine) {
-    // Referential integrity: check borrowing exists
-    if (fine.borrowing_id <= 0 || getBorrowing(fine.borrowing_id) == NULL) {
-        printf("Error: Borrowing ID %d does not exist.\n", fine.borrowing_id);
-        return 0;
-    }
-    if (fine.amount < 0) {
-        printf("Error: Fine amount cannot be negative.\n");
-        return 0;
-    }
     FILE* file = fopen("database/fines.dat", "ab");
     if (!file) return 0;
 
@@ -752,15 +590,6 @@ int addFine(Fine fine) {
 }
 
 int updateFine(Fine fine) {
-    // Referential integrity: check borrowing exists
-    if (fine.borrowing_id <= 0 || getBorrowing(fine.borrowing_id) == NULL) {
-        printf("Error: Borrowing ID %d does not exist.\n", fine.borrowing_id);
-        return 0;
-    }
-    if (fine.amount < 0) {
-        printf("Error: Fine amount cannot be negative.\n");
-        return 0;
-    }
     FILE* file = fopen("database/fines.dat", "rb+");
     if (!file) return 0;
 
