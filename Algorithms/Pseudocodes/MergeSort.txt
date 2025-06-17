@@ -1,1 +1,43 @@
-FUNCTION mergeSort
+FUNCTION MERGE_SORT(A, left, right)
+    IF left < right THEN
+        mid ← (left + right) / 2
+        MERGE_SORT(A, left, mid)
+        MERGE_SORT(A, mid + 1, right)
+        MERGE(A, left, mid, right)
+    END IF
+END FUNCTION
+
+FUNCTION MERGE(A, left, mid, right)
+    i ← left
+    j ← mid + 1
+    k ← right
+
+    CREATE temp[0 .. right]  // Temporary array
+
+    WHILE i ≤ mid AND j ≤ right DO
+        IF A[i] ≤ A[j] THEN
+            temp[k] ← A[i]
+            i ← i + 1
+        ELSE
+            temp[k] ← A[j]
+            j ← j + 1
+        END IF
+        k ← k + 1
+    END WHILE
+
+    WHILE i ≤ mid DO
+        temp[k] ← A[i]
+        i ← i + 1
+        k ← k + 1
+    END WHILE
+
+    WHILE j ≤ right DO
+        temp[k] ← A[j]
+        j ← j + 1
+        k ← k + 1
+    END WHILE
+
+    FOR x ← left TO right DO
+        A[x] ← temp[x]
+    END FOR
+END FUNCTION
